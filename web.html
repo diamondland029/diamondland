@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamondland | Real Estate & Investment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-blue: #0A192F;
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --light-bg: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: var(--navy-blue);
+        }
+
+        .gold-text {
+            color: var(--gold);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+            transition: color 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #b5952f;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--navy-blue);
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-bg);
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Featured Projects */
+        .projects {
+            background-color: var(--white);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--white);
+        }
+
+        .project-img {
+            height: 250px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .p-1 { background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80'); }
+        .p-2 { background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80'); }
+        .p-3 { background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80'); }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background-color: var(--navy-blue);
+            color: var(--white);
+        }
+
+        .why-us .section-title {
+            color: var(--white);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .features h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light-bg);
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-left: 5px solid var(--gold);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/fixed;
+            text-align: center;
+            padding: 6rem 5%;
+            color: var(--white);
+        }
+
+        .cta-banner h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            height: 250px;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .about, .contact { flex-direction: column; }
+            .btn-outline { margin-left: 0; margin-top: 10px; display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Diamondland</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <h1>Building Dreams, <br><span class="gold-text">Creating Communities</span></h1>
+        <p>Helping you find ideal properties and investment opportunities across the Philippines.</p>
+        <div>
+            <a href="#projects" class="btn btn-primary">View Properties</a>
+            <a href="#contact" class="btn btn-outline">Book a Site Visit</a>
+        </div>
+    </header>
+
+    <section id="about" class="about">
+        <div class="about-text">
+            <h2 class="section-title" style="text-align: left;">About Us</h2>
+            <p>At Diamondland, we operate on a foundation of trust, transparency, and client success. With years of expertise in real estate marketing and development, we specialize in transforming land into thriving communities and lucrative investments.</p><br>
+            <p>Whether you are looking for a serene farm lot, a residential space to build your family's future, or a high-yield investment property, our dedicated team is here to guide you every step of the way.</p>
+        </div>
+        <div class="about-image"></div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Our Expertise</h2>
+        <div class="grid-4">
+            <div class="service-card">
+                <div class="service-icon">🏡</div>
+                <h3>Property Selling</h3>
+                <p>Curated listings of premium farm, residential, and commercial lots.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Real Estate Marketing</h3>
+                <p>Innovative strategies to showcase properties to the right audience.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Investment Consultation</h3>
+                <p>Expert advice to secure properties with high appreciation value.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Property Development</h3>
+                <p>Turning raw land into master-planned, sustainable communities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">Featured Listings</h2>
+        <div class="grid-3">
+            <div class="project-card">
+                <div class="project-img p-1"></div>
+                <div class="project-info">
+                    <h3>Prime Farm Lots - Silang</h3>
+                    <p>📍 Silang, Cavite | 📐 500 - 1,000 sqm</p>
+                    <p>Cool climate, fertile soil, and near major highways. Perfect for agriculture or a vacation home.</p>
+                    <a href="#contact" class="btn btn-primary" style="padding: 10px 20px;">View Details</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img p-2"></div>
+                <div class="project-info">
+                    <h3>Residential Estates - Alfonso</h3>
+                    <p>📍 Alfonso, Cavite | 📐 150 - 300 sqm</p>
+                    <p>Peaceful neighborhood with modern amenities. Ideal for building your dream family home.</p>
+                    <a href="#contact" class="btn btn-primary" style="padding: 10px 20px;">View Details</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img p-3"></div>
+                <div class="project-info">
+                    <h3>Investment Lots - Amadeo</h3>
+                    <p>📍 Amadeo, Cavite | 📐 300 - 800 sqm</p>
+                    <p>High-growth area known as the Coffee Capital. Excellent opportunity for long-term land banking.</p>
+                    <a href="#contact" class="btn btn-primary" style="padding: 10px 20px;">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="features">
+            <div>
+                <h3>Trusted Partner</h3>
+                <p>Integrity and transparency in every transaction.</p>
+            </div>
+            <div>
+                <h3>Strategic Locations</h3>
+                <p>Properties situated in high-growth, accessible areas.</p>
+            </div>
+            <div>
+                <h3>High Investment Value</h3>
+                <p>Carefully selected lots designed for optimal appreciation.</p>
+            </div>
+            <div>
+                <h3>Professional Service</h3>
+                <p>End-to-end assistance from ocular visits to title transfers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 class="section-title">Client Success Stories</h2>
+        <div class="grid-3">
+            <div class="testimonial-card">
+                <p>"The team made finding our farm lot incredibly easy. Their transparency and professionalism gave us confidence in our investment."</p>
+                <div class="testimonial-author">- Mark & Sarah T.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Highly recommend! They guided me through the entire process of securing a residential lot in a prime location. Truly a trusted partner."</p>
+                <div class="testimonial-author">- Elena R.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Excellent investment consultation. I purchased a lot last year and the value has already appreciated significantly."</p>
+                <div class="testimonial-author">- David L.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <h2>Start Your Investment Journey Today</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.2rem;">Let us help you find the perfect property to build your future.</p>
+        <a href="#contact" class="btn btn-primary">Schedule an Ocular Visit</a>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-info">
+            <h2 class="section-title" style="text-align: left;">Get in Touch</h2>
+            <p><strong>📍 Office Location:</strong> Alfonso, Calabarzon, Philippines</p>
+            <p><strong>📞 Phone:</strong> +63 900 123 4567</p>
+            <p><strong>✉️ Email:</strong> inquiries@diamondland.ph</p>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30922.756286766467!2d120.8351586!3d14.1373505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd796a4ab29ab7%3A0x6b4fb66e60b73c22!2sAlfonso%2C%20Cavite%2C%20Philippines!5e0!3m2!1sen!2sus!4v1698765432100!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="tel" placeholder="Your Phone Number" required>
+            <textarea rows="6" placeholder="How can we help you? (e.g., I want to schedule a site visit for a farm lot)" required></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Properties</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2026 Diamondland. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
